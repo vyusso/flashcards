@@ -1,13 +1,18 @@
 import React from "react";
 import style from "./Flashcard.module.css";
 
+// imports needed props
 export default function Flashcard({ card, index, toggleFlip, cardRef }) {
   return (
     <div
+      // sets reference to the card which will be used to scroll to the last card
       ref={cardRef}
+      // sets the flip state of the card for animation
       className={`${style.flashcard} ${card.flipped ? style.flipped : ""}`}
+      // calls function to toggle flip state
       onClick={() => toggleFlip(index)}
     >
+      {/* divs for the front and back of the card */}
       <div className={style.flipInner}>
         <div className={style.front}>
           <h1>Question</h1>
