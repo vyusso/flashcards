@@ -1,0 +1,180 @@
+.flashcardAdd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 30px;
+}
+
+.siteTitle {
+  margin: 0;
+  color: white;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  grid-column: 2;
+  /* background-color: rgba(0, 0, 0, 0.61); */
+}
+
+.author {
+  grid-column: 3;
+  text-align: end;
+  padding-right: 20px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.author a {
+  text-decoration: underline;
+  color: white;
+}
+
+.author a:hover {
+  color: #ccc;
+}
+
+.textAreas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+
+.input {
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.85);
+  width: clamp(300px, 30vw, 600px);
+  height: 150px;
+  resize: none;
+  font-size: 1rem;
+}
+
+.divider h1 {
+  margin: 0;
+}
+
+.addCardButton {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: clamp(110px, 10vw, 100px);
+  height: 50px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.addCardButton:hover {
+  scale: 1.1;
+}
+
+.addCardButton:active {
+  scale: 1;
+  transition: all 0.1s ease-in-out;
+}
+
+.flashcardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.flashcard {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 100%;
+  max-width: 280px;
+  height: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.flashcard:hover {
+  scale: 1.1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flashcard h1 {
+  margin: 30px 0 20px 0;
+}
+.flashcard p {
+  margin: 0 25px 10px 25px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.flashcard {
+  perspective: 1000px;
+  width: 100%;
+  max-width: 280px;
+  height: 250px;
+}
+
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flipped .flipInner {
+  transform: rotateY(180deg);
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.back {
+  transform: rotateY(180deg);
+}

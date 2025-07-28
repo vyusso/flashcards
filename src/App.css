@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
