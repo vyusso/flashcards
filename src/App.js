@@ -6,7 +6,12 @@ import style from "./components/Flashcard.module.css";
 
 function App() {
   // creates a state variable called "cards" to hold the flashcard data for all cards
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(() => {
+    const savedCards = localStorage.getItem("cards");
+    return savedCards
+      ? JSON.parse(savedCards).map((card) => ({ ...card, flipped: false }))
+      : [];
+  });
   // creates a reference to the last card in the list
   const lastCardRef = useRef(null);
   // function to toggle the flip state of a card using index
@@ -18,6 +23,15 @@ function App() {
     );
   };
 
+  // function to delete a card using index
+  const handleDelete = (index) => {
+    setCards((prev) => {
+      const updated = [...prev];
+      updated.splice(index, 1);
+      return updated;
+    });
+  };
+
   // scroll to the last card when the cards change
   useEffect(() => {
     if (lastCardRef.current) {
@@ -26,6 +40,10 @@ function App() {
         block: "start",
       });
     }
+
+    const resetFlipped = cards.map((card) => ({ ...card, flipped: false }));
+
+    localStorage.setItem("cards", JSON.stringify(cards));
   }, [cards]);
 
   return (
@@ -47,6 +65,7 @@ function App() {
             key={index}
             card={card}
             toggleFlip={toggleFlip}
+            onDelete={handleDelete}
             index={index}
             // adds a ref to the last card
             cardRef={index === cards.length - 1 ? lastCardRef : null}

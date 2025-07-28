@@ -18,6 +18,8 @@ export default function FlashcardAdd({ cards, setCards }) {
     // resets the question and answer values
     setQuestion("");
     setAnswer("");
+    // sets the cursor to the question text area
+    questionRef.current.focus();
   };
 
   // logs the cards array just for debugging
@@ -32,6 +34,7 @@ export default function FlashcardAdd({ cards, setCards }) {
         <div className={style.divider}>
           <h1>Question</h1>
           <textarea
+            maxLength={200}
             ref={questionRef}
             className={style.input}
             // sets the value of the question state variable
@@ -50,6 +53,7 @@ export default function FlashcardAdd({ cards, setCards }) {
         <div className={style.divider}>
           <h1>Answer</h1>
           <textarea
+            maxLength={200}
             ref={answerRef}
             className={style.input}
             // sets the value of the answer state variable
