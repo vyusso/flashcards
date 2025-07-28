@@ -7,7 +7,9 @@ import style from "./components/Flashcard.module.css";
 function App() {
   // creates a state variable called "cards" to hold the flashcard data for all cards
   const [cards, setCards] = useState(() => {
+    // gets the saved cards from local storage
     const savedCards = localStorage.getItem("cards");
+    // if there are saved cards, parse them and set the flip state to false
     return savedCards
       ? JSON.parse(savedCards).map((card) => ({ ...card, flipped: false }))
       : [];
@@ -41,8 +43,10 @@ function App() {
       });
     }
 
+    // resets the flip state of all cards
     const resetFlipped = cards.map((card) => ({ ...card, flipped: false }));
 
+    // updates the cards state
     localStorage.setItem("cards", JSON.stringify(cards));
   }, [cards]);
 
